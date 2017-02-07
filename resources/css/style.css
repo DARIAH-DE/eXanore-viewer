@@ -1,0 +1,31 @@
+/* Application styles could go here */
+
+table#annoTable tbody tr th a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 220px;
+}
+table#annoTable tbody tr th a:hover {
+    text-overflow: inherit;
+    white-space: inherit;
+    width: inherit;
+}
+
+.trunc {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 275px;
+}
+
+.trunc:hover {
+    text-overflow: inherit;
+    white-space: inherit;
+    width: inherit;
+}
+
+footer .poweredby { float: right; margin: 33px 10px 0 0;}
+footer .poweredby img { width: 120px; }

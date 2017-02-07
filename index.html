@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div data-template="eXv:table"/>
+            <script type="text/javascript" src="resources/js/DataTables/datatables.min.js"/>
+            <script>
+                $( document ).ready(function(){
+                    $( "#store2TextGrid" ).on("click", function() {
+                        console.log( "Hi!" );
+                        var sid = $('#sessionId').val(),
+                            pid = $('#projectId').val(),
+                            aid = [];
+                        $('.selected').each(function(){
+                                var id = $(this).attr("id");
+                                aid.push( id );
+                            });
+                        $.ajax({
+                          method: "POST",
+                          url: "send2TextGrid.xq",
+                          data: { sessionId: sid, projectId: pid, annos: aid.join(",") }
+                        })
+                          .done(function( msg ) {
+                            alert( "OK" );
+                          });
+                    });
+                    $(".table").on("change", function(){
+                        if ( $(".selected").length === 0 ) {
+                            $(".textgrid").addClass("disabled");
+                        }
+                        else {
+                            $(".textgrid").removeClass("disabled");
+                        }
+                    });
+                });
+                function testSelect() {
+                    if ( $(".selected").length === 0 ) {
+                            $(".textgrid").addClass("disabled");
+                        }
+                        else {
+                            $(".textgrid").removeClass("disabled");
+                        }
+                }
+                $.fn.dataTable.ext.buttons.textgrid = {
+                    className: "textgrid",
+                    text: 'Send to TextGrid',
+                    enabled: false,
+                    action: function () {
+                            $('#tgModal').modal('show');
+                        }
+                };
+                var table = $('#annoTable').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'selectAll',
+                        'selectNone',
+                        'csvHtml5',
+                        'colvis',
+                        'textgrid'
+                    ]});
+                table.on( 'select', function () {
+                    testSelect();
+                } );
+                table.on( 'deselect', function () {
+                    testSelect();
+                } );
+            </script>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="tgModal" tabindex="-1" role="dialog" aria-labelledby="tgModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+            <h4 class="modal-title" id="tgModalLabel">Store Annotations in TextGrid</h4>
+          </div>
+          <div class="modal-body">
+            <p>In order to store any selected annotation in TextGrid, you have to provide a SessionId and a ProjectId. You will find both informations within the Lab.</p>
+            
+              <div class="form-group">
+                <label for="sessionId">Session ID</label>
+                <input type="text" class="form-control" id="sessionId" placeholder="sessionId"/>
+              </div>
+              <div class="form-group">
+                <label for="projectId">Project ID</label>
+                <input type="text" class="form-control" id="projectId" placeholder="projectId"/>
+              </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="submit" id="store2TextGrid" class="btn btn-primary">Store in TextGrid</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

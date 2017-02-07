@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="http://exist-db.org/xquery/repo">
+    <description>eXv</description>
+    <author>mgoebel</author>
+    <website/>
+    <status>beta</status>
+    <license>GNU-LGPL</license>
+    <copyright>true</copyright>
+    <type>application</type>
+    <target>eXanore-viewer</target>
+    <prepare>pre-install.xql</prepare>
+    <finish>post-install.xql</finish>
+<deployed>2016-11-23T13:48:45.543+01:00</deployed>
+</meta>
