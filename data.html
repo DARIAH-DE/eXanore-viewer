@@ -1,0 +1,22 @@
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+
+    <div data-template="customElements:prepare" data-template-uri="textgrid:ts1v.0"/>
+
+    <link rel="stylesheet" type="text/css" href="https://annotation.de.dariah.eu/annotatorjs/annotator.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://annotation.de.dariah.eu/annotatorjs/dariah-annotation.css" />
+    <script type="text/javascript" src="https://annotation.de.dariah.eu/annotatorjs/annotator-full.min.js"></script>
+    <script type="text/javascript" src="https://annotation.de.dariah.eu/annotatorjs/dariah-annotation.js"></script>
+    <script>
+      DariahAnnotation.setupAnnotator();
+    </script>
+    <div id="info" style="position:fixed; display:block; background-color:rgba(211,211,211, 0.8); font-family: monospace; right: 0; bottom: 0; height: 30px; width: 100%; text-align: center;"/>
+    <script>
+        $("*[data-info]").mouseover(function(e){
+            e.stopPropagation();
+            $("#info").text( $(this).attr("data-info") );
+        });
+        $("*[data-info]").on("mouseleave", function(e){
+            $("#info").text( " " );
+        });
+    </script>
+</div>

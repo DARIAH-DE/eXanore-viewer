@@ -1,0 +1,986 @@
+/* =============================================================
+    CSS2 specification for TEI in oXygen.
+ derived from stylesheet by
+    Author: Adrian Edwards (adrian_edwards@yahoo.com)
+    Date:   2000-04-19
+ edited by Sebastian Rahtz (sebastian.rahtz@oucs.ox.ac.uk)
+            2001-05-06
+ 2003-08-29 start of new parent div resets child auto-count. kl
+ 2003-11-06 list attr list-style-type was none, TEI-now disc. kl
+ 2007-06  reworking for TEI P5 and oxygen
+
+$LastChangedDate$, TEI-$LastChangedRevision$, TEI-$LastChangedBy$
+============================================================= */
+/* Use Times New Roman for default font */
+TEI-TEI {
+	font-family: Times-Roman, sans-serif;
+	font-size: 1.5em;
+}
+TEI-abbr {
+  display: inline;
+}
+TEI-add {
+  display: inline;
+  color: green;
+  background-color: inherit;
+  text-decoration: underline;
+}
+TEI-address {
+  display: block;
+  margin-top: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 2em;
+}
+TEI-addrLine {
+  display: block;
+  white-space: nowrap;
+}
+TEI-anchor {
+  display: none;
+}
+TEI-argument {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-att {
+  display: inline;
+  font-family: sans-serif;
+  color: blue;
+  background-color: inherit;
+}
+TEI-att:before {
+  content: "@";
+}
+TEI-author {
+  display: inline;
+}
+
+TEI-back {
+  display: block;
+  border: thin black solid;
+  margin-top: 1em;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.5em;
+}
+TEI-bibl {
+  display: inline;
+}
+
+TEI-argument > TEI-bibl, TEI-body > TEI-bibl, TEI-cit > TEI-bibl, TEI-div > TEI-bibl, TEI-div0 > TEI-bibl, TEI-div1 > TEI-bibl, TEI-div2 > TEI-bibl, TEI-div3 > TEI-bibl, TEI-div4 > TEI-bibl, TEI-div5 > TEI-bibl, TEI-div6 > TEI-bibl, TEI-div7 > TEI-bibl, TEI-epigraph > TEI-bibl, TEI-listBibl > TEI-bibl > TEI-bibl, TEI-taxonomy > TEI-bibl {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-biblFull {
+  display: inline;
+}
+
+TEI-argument > TEI-biblFull, TEI-body > TEI-biblFull, TEI-cit > TEI-biblFull, TEI-div > TEI-biblFull, TEI-div0 > TEI-biblFull, TEI-div1 > TEI-biblFull, TEI-div2 > TEI-biblFull, TEI-div3 > TEI-biblFull, TEI-div4 > TEI-biblFull, TEI-div5 > TEI-biblFull, TEI-div6 > TEI-biblFull, TEI-div7 > TEI-biblFull, TEI-epigraph > TEI-biblFull, TEI-listBibl > TEI-biblFull > TEI-biblFull, TEI-taxonomy > TEI-biblFull {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-biblScope {
+  display: inline;
+}
+
+TEI-imprint > TEI-biblScope {
+  display: block;
+}
+
+TEI-body {
+  font-family: serif;
+  margin-top: 5px;
+  margin-left: 10px;
+  display: block;
+  counter-reset: div1;
+
+}
+TEI-byline {
+  display: block;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+TEI-category {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-catRef {
+  display: none;
+}
+TEI-cell {
+  display: table-cell;
+  border: 1px solid #EEEFEE;
+  padding: 3px;
+  color: inherit;
+  background-color:inherit;
+}
+TEI-cell[role='label'] {
+   color: inherit;
+   background-color: #BBBBBB;
+}
+TEI-change {
+  display: block;
+  margin-bottom: 1em;
+  margin-left: 2em;
+}
+TEI-cit {
+  display: inline;
+}
+
+TEI-argument > TEI-cit, TEI-body > TEI-cit, TEI-div > TEI-cit, TEI-div0 > TEI-cit, TEI-div1 > TEI-cit, TEI-div2 > TEI-cit, TEI-div3 > TEI-cit, TEI-div4 > TEI-cit, TEI-div5 > TEI-cit, TEI-div6 > TEI-cit, TEI-div7 > TEI-cit, TEI-epigraph > TEI-cit {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+TEI-classCode {
+  display: block;
+}
+TEI-elementSpec, TEI-macroSpec, TEI-classSpec {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-closer {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-code {
+  display: inline;
+  font-family: monospace;
+}
+TEI-corr {
+  display: inline;
+  color: green;
+  background-color: inherit;
+}
+TEI-creation {
+  display: block;
+}
+TEI-date {
+  display: inline;
+}
+
+TEI-change > TEI-date, TEI-publicationStmt > TEI-date {
+  display: block;
+  font-weight: bold;
+}
+TEI-dateline {
+  display: inline;
+}
+TEI-del {
+  display: inline;
+  color: red;
+  background-color: inherit;
+  text-decoration: line-through;
+}
+TEI-distributor {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-body > TEI-div {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div1;
+  counter-reset: div2;
+}
+TEI-body > TEI-div > TEI-div {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div2;
+  counter-reset: div3;
+}
+TEI-body > TEI-div > TEI-div > TEI-div {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div3;
+}
+TEI-div1 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div1;
+  counter-reset: div2;
+}
+TEI-div2 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div2;
+  counter-reset: div3;
+}
+TEI-div3 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div3;
+  counter-reset: div4;
+}
+TEI-div4 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div4;
+  counter-reset: div5;
+}
+TEI-div5 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div5;
+  counter-reset: div6;
+}
+TEI-div6 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div6;
+  counter-reset: div7;
+}
+TEI-div7 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div7;
+}
+TEI-divGen {
+  display: none;
+}
+TEI-docAuthor {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+TEI-byline TEI-docAuthor {
+  display: inline;
+}
+
+TEI-titlePage TEI-docAuthor {
+
+}
+
+TEI-titlePage TEI-docTitle {
+
+}
+
+TEI-edition {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+TEI-bibl edition {
+  display: inline;
+}
+
+TEI-editionStmt {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-editor {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+TEI-bibl editor {
+  display: inline;
+}
+
+TEI-eg {
+  font-family: monospace;
+  padding-top: 3mm;
+  padding-left: 4pt;
+  padding-bottom: 2pt;
+  display: block;
+  margin-top: 12pt;
+  margin-bottom: 12pt;
+  white-space: pre;
+  color: inherit;
+  background-color: #FFCC99;
+}
+
+TEI-argument > TEI-eg, TEI-body > TEI-eg, TEI-div > TEI-eg, TEI-div0 > TEI-eg, TEI-div1 > TEI-eg, TEI-div2 > TEI-eg, TEI-div3 > TEI-eg, TEI-div4 > TEI-eg, TEI-div5 > TEI-eg, TEI-div6 > TEI-eg, TEI-div7 > TEI-eg, TEI-epigraph > TEI-eg {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-emph {
+  display: inline;
+  font-style: italic;
+}
+TEI-epigraph {
+  display: block;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+TEI-extent {
+  display: block;
+  margin-bottom: 1em;
+}
+
+TEI-bibl extent {
+  display: inline;
+}
+
+TEI-graphic{
+    color: gray;
+    background-color: inherit;
+    content: "{" attr(url) "}";
+}
+TEI-figure {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-foreign {
+  display: inline;
+  font-style: italic;
+}
+TEI-formula {
+  display: inline;
+  font-style: italic;
+}
+TEI-front {
+  display: block;
+  margin-bottom: 1em;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.5em;
+}
+TEI-funder {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-gap {
+  display: none;
+}
+
+TEI-gap:after {
+  content: "[...]";
+  font-style: italic;
+}
+TEI-gi,tag {
+  display: inline;
+  font-family: sans-serif;
+  color: blue;
+  background-color: inherit;
+}
+
+TEI-tag:before,gi:before {
+  content: "<";
+}
+
+TEI-tag:after,gi:after {
+  content: ">";
+}
+
+TEI-gloss {
+  display: inline;
+}
+TEI-group {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-body > TEI-div > TEI-head {
+  display: block;
+  font-size: larger;
+  padding-top: 14px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  color: inherit;
+  background-color: #BBBBBB;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+TEI-body > TEI-div > TEI-div > TEI-head {
+  display: block;
+  padding-top: 14px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  color: inherit;
+  background-color: #BBBBBB;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+TEI-body > TEI-div > TEI-div > TEI-div > TEI-head {
+  display: block;
+  padding-top: 14px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  color: inherit;
+  background-color: #BBBBBB;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+TEI-div1 > TEI-head:before {
+  content: counter(div1) ". ";
+  color: black;
+  background-color: inherit;
+}
+TEI-div2 > TEI-head:before {
+  content: counter(div1) "." counter(div2) ". ";
+  color: black;
+  background-color: inherit;
+}
+TEI-div3 > TEI-head:before {
+  content: counter(div1) "." counter(div2) "." counter(div3) ". ";
+  color: black;
+  background-color: inherit;
+}
+TEI-body > TEI-div > TEI-head:before {
+  content: counter(div1) ". ";
+  color: black;
+  background-color: inherit;
+}
+TEI-body > TEI-div > TEI-div > TEI-head:before {
+  content: counter(div1) "." counter(div2) ". ";
+  color: black;
+  background-color: inherit;
+}
+TEI-body > TEI-div > TEI-div > TEI-div > TEI-head:before {
+  content: counter(div1) "." counter(div2) "." counter(div3) ". ";
+  color: black;
+  background-color: inherit;
+}
+TEI-hi {
+  display: inline;
+  background-color:yellow;
+  color: black;
+}
+
+TEI-hi[rend] {
+  background-color: inherit;
+  color: inherit;
+}
+
+TEI-hi[rend="bold"] {
+  display: inline;
+  font-weight: bold;
+}
+TEI-hi[rend="italic"] {
+  display: inline;
+  font-style: italic;
+}
+TEI-hi[rend="it"] {
+  display: inline;
+  font-style: italic;
+}
+TEI-hi[rend="sc"] {
+  display: inline;
+  font-variant: small-caps;
+}
+TEI-hi[rend="sup"] {
+  display: inline;
+  vertical-align: super;
+  font-size: smaller;
+}
+TEI-hi[rend="sub"] {
+  display: inline;
+  vertical-align: sub;
+  font-size: smaller;
+}
+TEI-hi[rend="ul"] {
+  display: inline;
+  text-decoration: underline;
+}
+TEI-ident {
+  display: inline;
+  font-family: monospace;
+}
+TEI-idno {
+  display: block;
+  margin-bottom: 1em;
+}
+
+TEI-bibl idno {
+  display: inline;
+}
+
+TEI-imprint {
+  display: inline;
+}
+TEI-index {
+  display: none;
+}
+TEI-interp {
+  display: none;
+}
+TEI-interpGrp {
+  display: none;
+}
+TEI-list[type = "gloss"] item {
+  display: block;
+  margin-left: 1em;
+}
+TEI-list item {
+  display: list-item;
+  margin-left: 12pt;
+}
+
+
+TEI-item {
+  display: list-item;
+  margin-left: 12pt;
+}
+
+TEI-item[n]:before {
+  content: attr(n) ". " ;
+  list-style: none;
+} /* should there be space after the content?
+     And should default marker be suppressed
+     when there is an @n attribute? --DRS */
+
+TEI-change item {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-left: 1em;
+  margin-top: 0.5em;
+}
+TEI-keywords {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-kw {
+  display: inline;
+  font-style: italic;
+}
+TEI-l {
+  display: block;
+  white-space: nowrap;
+}
+TEI-label {
+  display: inline;
+  font-weight: bold;
+}
+TEI-Label {
+	display: inline;
+	font-weight : bold;
+	color: #2F4F4F;
+    background-color: inherit;
+}
+
+TEI-argument > TEI-label, TEI-body > TEI-label, TEI-div > TEI-label, TEI-div0 > TEI-label, TEI-div1 > TEI-label, TEI-div2 > TEI-label, TEI-div3 > TEI-label, TEI-div4 > TEI-label, TEI-div5 > TEI-label, TEI-div6 > TEI-label, TEI-div7 > TEI-label, TEI-epigraph > TEI-label {
+  display: block;
+  font-weight: bold;
+}
+TEI-langUsage {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-lb {
+  display: block;
+}
+TEI-lg {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-list {
+  display: block;
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-bottom: 1em;
+  margin-left: 2em;
+  margin-top: 1em;
+}
+
+TEI-list[rend="runon"] {
+  display: inline;
+}
+
+TEI-list[type="bulleted"] {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+TEI-list[type="unordered"] {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+TEI-list[type="ordered"] {
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+
+TEI-list[type="numbered"] {
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+TEI-list[type="none"] {
+  list-style-type: none;
+}
+
+TEI-listBibl {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-mentioned {
+  display: inline;
+  font-style: italic;
+}
+TEI-milestone {
+  display: none;
+}
+TEI-name {
+  display: inline;
+}
+TEI-note {
+  display: block;
+  font-size: smaller;
+}
+
+TEI-note[n]:before {
+  content: attr(n);
+  vertical-align: super;
+}
+
+TEI-note[place="left"] {
+  float: left;
+}
+
+TEI-note[place="right"] {
+  float: right;
+}
+
+TEI-note[place="inline"], TEI-note[place="unspecified"] {
+  display: inline;
+}
+TEI-notesStmt {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-num {
+  display: inline;
+}
+TEI-opener {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-orig {
+  display: inline;
+}
+TEI-p {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-pb {
+  display: none;
+}
+
+TEI-pb:after {
+  content: attr(n);
+  font-weight: bold;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-align: center;
+}
+
+TEI-principal {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-ptr {
+    color: navy;
+    text-decoration: underline;
+    background-color: inherit;
+}
+TEI-ptr:before{
+    background-color: inherit;
+    color: red;
+    content:"[" attr(target) "]";
+}
+
+TEI-publicationStmt {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-publisher {
+  display: inline;
+}
+
+TEI-imprint > TEI-publisher, TEI-publicationStmt > TEI-publisher {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-pubPlace {
+  display: inline;
+}
+
+TEI-imprint > TEI-pubPlace, TEI-publicationStmt > TEI-pubPlace {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-q {
+  display: inline;
+  quotes: '"' '"' "'" "'";
+  margin-top: 0em;
+  margin-left: 0em;
+  margin-right: 0em;
+  margin-bottom: 0em;
+}
+
+TEI-q[rend="display"], TEI-argument > TEI-q, TEI-body > TEI-q, TEI-cit > TEI-q, TEI-div > TEI-q, TEI-div0 > TEI-q, TEI-div1 > TEI-q, TEI-div2 > TEI-q, TEI-div3 > TEI-q, TEI-div4 > TEI-q, TEI-div5 > TEI-q, TEI-div6 > TEI-q, TEI-div7 > TEI-q, TEI-epigraph > TEI-q {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-left: 3em;
+  margin-right: 3em;
+  quotes: none;
+}
+
+TEI-q:before {
+  content: open-quote;
+}
+
+TEI-q:after {
+  content: close-quote;
+}
+
+TEI-ref {
+  display: inline;
+  color: blue;
+  background-color: inherit;
+}
+TEI-ref:before{
+    color: gray;
+    background-color: inherit;
+    text-decoration: underline;
+    content:'{' attr(target) '}';
+}
+
+TEI-reg {
+  display: inline;
+  font-style: italic;
+}
+TEI-rendition {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-resp {
+  display: inline;
+}
+TEI-respStmt {
+  display: block;
+}
+
+TEI-bibl respStmt {
+  display: inline;
+}
+
+TEI-rdg:before {
+  background-color: inherit;
+  content: "[" attr(wit) "] ";
+  color: red;
+  }
+TEI-row {
+  display: table-row;
+}
+TEI-row[role='label'] {
+   color: inherit;
+   background-color: #BBBBBB;
+}
+
+TEI-rs {
+  display: inline;
+}
+TEI-s {
+  display: inline;
+}
+TEI-salute {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-samplingDecl {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-seg {
+  display: inline;
+}
+TEI-seriesStmt {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-sic {
+  display: inline;
+  color: red;
+  background-color: inherit;
+}
+
+TEI-sic:after {
+  content: " [sic]";
+}
+TEI-signed {
+  display: block;
+  text-align: right;
+}
+TEI-soCalled {
+  display: inline;
+  font-style: italic;
+  quotes: "'" "'";
+}
+
+TEI-soCalled:before {
+  content: open-quote;
+}
+
+TEI-soCalled:after {
+  content: close-quote;
+}
+
+TEI-sp {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+}
+TEI-speaker {
+  display: inline;
+  font-weight: bold;
+}
+TEI-sponsor {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-stage {
+  display: inline;
+  font-style: italic;
+}
+TEI-table {
+  text-align: center;
+  display: table;
+  margin: 1em
+}
+TEI-table > TEI-head{
+    display:table-caption;
+    font-style: italic;
+    margin-bottom: 6pt;
+}
+
+TEI-tagUsage {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-taxonomy {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-term {
+  font-family: sans-serif;
+  color: blue;
+  background-color: inherit;
+  display: inline;
+}
+TEI-textClass {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-time {
+  display: inline;
+}
+TEI-title {
+  display: inline;
+}
+
+TEI-seriesStmt > TEI-title, TEI-titleStmt > TEI-title {
+}
+TEI-titlePage {
+  display: block;
+  border: thin black solid;
+  margin-bottom: 2em;
+  text-align: center;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+TEI-titlePart {
+  display: block;
+}
+TEI-titleStmt {
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 1em;
+  text-align: center;
+}
+TEI-trailer {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-unclear {
+  display: inline;
+  color: silver;
+  background-color: inherit;
+  font-style: italic;
+}
+/* header-related material */
+TEI-teiHeader {
+  display: block;
+  color: silver;
+  background-color: rgb(251, 242, 234);
+  border: solid black 1pt;
+  margin-bottom: 2em;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+TEI-titleStmt > TEI-author {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-authority {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-availability {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-fileDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-sourceDesc {
+  display: block;
+  border: thin silver solid;
+  margin-bottom: 1em;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+TEI-revisionDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-catDesc {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-encodingDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-profileDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+TEI-projectDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+
+TEI-docDate {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+TEI-docImprint TEI-docDate {
+  display: inline;
+}
+
+TEI-docEdition {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-docImprint {
+  display: block;
+  margin-bottom: 0.5em;
+}
+TEI-docTitle {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}

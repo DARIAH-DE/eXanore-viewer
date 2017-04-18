@@ -7,13 +7,14 @@ xquery version "3.1";
 
 import module namespace templates="http://exist-db.org/xquery/templates" ;
 
-(: 
- : The following modules provide functions which will be called by the 
+(:
+ : The following modules provide functions which will be called by the
  : templating.
  :)
 import module namespace config="http://annotation.de.dariah.eu/eXanore-viewer/config" at "config.xqm";
 import module namespace app="http://annotation.de.dariah.eu/eXanore-viewer/templates" at "app.xql";
 import module namespace eXv="http://annotation.de.dariah.eu/eXanore-viewer/main" at "eXv.xql";
+import module namespace customElements="http://annotation.de.dariah.eu/eXanore-viewer/customElements" at "customElements.xqm";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 
