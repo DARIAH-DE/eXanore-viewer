@@ -351,7 +351,7 @@ TEI-gap:after {
   content: "[...]";
   font-style: italic;
 }
-TEI-gi,tag {
+TEI-gi, TEI-tag {
   display: inline;
   font-family: sans-serif;
   color: blue;
@@ -906,15 +906,17 @@ TEI-unclear {
 }
 /* header-related material */
 TEI-teiHeader {
-  display: block;
-  color: silver;
-  background-color: rgb(251, 242, 234);
-  border: solid black 1pt;
-  margin-bottom: 2em;
-  padding-top: 1em;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-bottom: 1em;
+    display: block;
+    color: black;
+    background-color: rgba(108, 152, 188, 0.4);
+    border: solid black 1pt;
+    font-weight: 200;
+    font-size: x-small;
+    margin-bottom: 2em;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em;
 }
 TEI-titleStmt > TEI-author {
   display: block;

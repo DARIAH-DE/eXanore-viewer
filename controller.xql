@@ -1,7 +1,7 @@
 xquery version "3.0";
 
 import module namespace jwt="http://de.dariah.eu/ns/exist-jwt-module";
-import module namespace exanoreParam="http://www.eXanore.com/param" at "../eXanore/modules/params.xql" ;
+import module namespace exanoreParam="http://www.eXanore.com/param" at "../eXanore/modules/params.xqm" ;
 
 declare variable $exist:path external;
 declare variable $exist:resource external;
@@ -64,5 +64,5 @@ declare variable $user := jwt:verify( $authTokenInParameter, $exanoreParam:JwtSe
             </dispatch>
     else
         <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-                <redirect url="https://ldap-dariah-clone.esc.rzg.mpg.de/secure/getJWT.php?return=https%3A%2F%2Fannotation.de.dariah.eu%2FAnnotationViewer%2Findex.html"/>
+                <redirect url="https://annotation.de.dariah.eu/secure/getJWT.php?return=%2FAnnotationViewer{encode-for-uri( substring-after(request:get-url(), $exist:controller) || "?" || request:get-query-string() )}"/>
             </dispatch>
