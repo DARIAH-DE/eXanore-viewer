@@ -1,15 +1,21 @@
 <div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
 
     <div id="WhatIsThis" class="alert alert-info alert-dismissible" role="alert">
-     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span></button>
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+                <i class="fa fa-times" aria-hidden="true"/>
+            </span>
+        </button>
     <h4>About</h4>
         <p>Annotations made on this page are relative to the XML document. Instead
-            of annotating a rendered website you annotate the beautiful XML data and create awesome standoff markup<i class="fa fa-exclamation" aria-hidden="true"></i></p>
+            of annotating a rendered website you annotate the <i class="fa fa-hand-lizard-o" aria-hidden="true"/>
+ XML data and create <i class="fa fa-space-shuttle" aria-hidden="true"/>
+ standoff markup<i class="fa fa-exclamation" aria-hidden="true"/>
+        </p>
         <p>If you want to be able to annotate your own documents or data from a
             different repository, feel free to contribute to our source code
             on <a class="alert-link" href="https://github.com/DARIAH-DE/eXanore-viewer/">GitHub</a>
-            by adding a <a class="alert-link"
-            href="https://github.com/DARIAH-DE/eXanore-viewer/blob/ec29c54890264394c6bfa27b17b4539cb244cffe/modules/customElements.xqm#L8">
+            by adding a <a class="alert-link" href="https://github.com/DARIAH-DE/eXanore-viewer/blob/ec29c54890264394c6bfa27b17b4539cb244cffe/modules/customElements.xqm#L8">
             URL schema</a> to access the data and a corresponding CSS.</p>
     </div>
 
@@ -24,14 +30,11 @@
     </script>
     <div id="info" style="position:fixed; display:block; background-color:rgba(211,211,211, 0.8); font-family: monospace; right: 0; bottom: 0; height: 30px; width: 100%; text-align: center;"/>
     <script>
-        $("*[data-info]").on(
-            {
-                mouseenter: function(e){
-                    $("#info").text( $(this).attr("data-info"));
-                },
-                mouseleave: function(e){
-                    $("#info").text( " " );
-                }
-            });
+        // http://stackoverflow.com/questions/8813051
+        $(window).on("mousemove", function(e) {
+            var x = e.clientX, y = e.clientY,
+                elementMouseIsOver = document.elementFromPoint(x, y);
+            $("#info").text( $( elementMouseIsOver ).attr("data-info") );
+        });
     </script>
 </div>
