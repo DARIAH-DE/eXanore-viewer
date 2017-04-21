@@ -5,8 +5,24 @@ import module namespace console="http://exist-db.org/xquery/console" at "java:or
 
 
 declare function customElements:prepare($node as node(), $model as map(*), $uri as xs:string) {
-    let $data := doc("https://textgridlab.org/1.0/tgcrud-public/rest/" || $uri || "/data")
-    let $node := $node/parent::*/parent::*
+    let $prefix := tokenize($uri, ":")[1]
+
+    let $repoUrl := switch ($prefix)
+                        case "textgrid" return "https://textgridlab.org/1.0/tgcrud-public/rest/"
+                        case "dta" return "http://www.deutschestextarchiv.de/book/download_xml/"
+                        default return ()
+
+    let $urlUri := switch ($prefix)
+                        case "textgrid" return $uri
+                        case "dta" return substring-after( $uri, "dta:")
+                        default return ()
+
+    let $repoSuffix := switch ($prefix)
+                        case "textgrid" return "/data"
+                        default return ()
+
+    let $data := doc($repoUrl || $urlUri || $repoSuffix )
+
     return
         local:transform($data/*, name($data/*))
 };
