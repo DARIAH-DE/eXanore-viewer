@@ -332,6 +332,7 @@ TEI-formula {
   font-style: italic;
 }
 TEI-front {
+  color: grey;
   display: block;
   margin-bottom: 1em;
   padding-top: 0.5em;
@@ -439,8 +440,9 @@ TEI-body > TEI-div > TEI-div > TEI-div > TEI-head:before {
 }
 TEI-hi {
   display: inline;
-  background-color:yellow;
-  color: black;
+  font-style:italic;
+ /* background-color: yellow; */
+ /*  color: black; */
 }
 
 TEI-hi[rend] {
