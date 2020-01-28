@@ -10,11 +10,13 @@ declare function customElements:prepare($node as node(), $model as map(*), $uri 
     let $repoUrl := switch ($prefix)
                         case "textgrid" return "https://textgridlab.org/1.0/tgcrud-public/rest/"
                         case "dta" return "http://www.deutschestextarchiv.de/book/download_xml/"
+                        case "ota" return "https://ota.bodleian.ox.ac.uk/repository/xmlui/bitstream/handle/20.500.12024/"
                         default return ()
 
     let $urlUri := switch ($prefix)
                         case "textgrid" return $uri
                         case "dta" return substring-after( $uri, "dta:")
+                        case "ota" return substring-after( $uri, "ota:") || "/" || substring-after( $uri, "ota:") || ".xml?sequence=6&isAllowed=y"
                         default return ()
 
     let $repoSuffix := switch ($prefix)
