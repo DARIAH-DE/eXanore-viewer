@@ -16,7 +16,7 @@ declare function customElements:prepare($node as node(), $model as map(*), $uri 
     let $urlUri := switch ($prefix)
                         case "textgrid" return $uri
                         case "dta" return substring-after( $uri, "dta:")
-                        case "ota" return substring-after( $uri, "ota:") || "/" || substring-after( $uri, "ota:") || ".xml?sequence=6&isAllowed=y"
+                        case "ota" return substring-after( $uri, "ota:") || "/" || substring-after( $uri, "ota:") || ".xml"
                         default return ()
 
     let $repoSuffix := switch ($prefix)
