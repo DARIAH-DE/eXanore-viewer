@@ -26,10 +26,12 @@ declare variable $config:app-root :=
         else
             $rawPath
     return
-        substring-before($modulePath, "/modules")
+        replace( substring-before($modulePath, "/modules"), "null", "" )
 ;
 
 declare variable $config:data-root := "/" || string-join(tokenize($config:app-root, '/')[position() lt last()][position() gt 1], '/') || "/eXanore/annotations";
+
+declare variable $config:grpHome := $config:app-root || "/groups/";
 
 declare variable $config:repo-descriptor := doc(concat($config:app-root, "/repo.xml"))/repo:meta;
 

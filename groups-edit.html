@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div data-template="eXgroups:receiver"/>
+    <div class="row">
+        <h1>Manage a Group: <span data-template="eXgroups:nameTmpl"/>
+        </h1>
+        <div class="col-md-6 col-md-offset-3">
+            <h2>Admin:</h2>
+            <div data-template="eXgroups:manage" data-template-role="admin"/>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAdminModal">add</button>
+            <form method="POST" id="colorAdmin">
+                <input type="hidden" name="todo" value="colorAdmin"/>
+                <input type="hidden" name="groupId" data-template="eXgroups:setGroupInput"/>
+                <div style="margin-top:15px;" data-template="eXgroups:colorAdmin"/>
+            </form>
+        </div>
+        <div class="col-md-6 col-md-offset-3">
+            <h2>Contributors:</h2>
+            <div data-template="eXgroups:manage" data-template-role="contributor"/>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addContributorModal">add</button>
+            <br/>
+            <form method="POST" id="colorContributor">
+                <input type="hidden" name="todo" value="colorContributor"/>
+                <input type="hidden" name="groupId" data-template="eXgroups:setGroupInput"/>
+                <div style="margin-top:15px;" data-template="eXgroups:colorContributor"/>
+            </form>
+        </div>
+    </div>
+    <!-- Modal Admin -->
+    <div class="modal fade" id="addAdminModal" tabindex="-1" role="dialog" aria-labelledby="addAdminModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+            <h4 class="modal-title" id="addAdminModalLabel">add additional admin(s)</h4>
+          </div>
+          <form data-template="eXgroups:form-action-to-current-url" method="POST">
+          <div class="modal-body">
+                <div id="templateMember">
+                    <div class="input-group">
+                      <input type="text" class="form-control grpMember" name="grpMember" placeholder="Username" aria-describedby="domain"/>
+                      <span class="input-group-addon" id="domain">@dariah.eu</span>
+                    </div>
+                </div>
+                <button id="addMember" type="button" class="btn btn-primary btn-block" style="margin-top:15px;">add more</button>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="addAdmin" value="1"/>
+                <button type="submit" class="btn btn-success">add</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+                    </form>
+        </div>
+      </div>
+    </div>
+    <!-- END Modal Admin -->
+    <script>
+    $( document ).ready( function() {
+        var tmpl =  $('#templateMember').html();
+        $('#addMember').on("click", function(){
+            $('#templateMember').append(function() {
+            return tmpl
+            });
+        });
+    });
+    </script>
+    <!-- Modal Contributor -->
+    <div class="modal fade" id="addContributorModal" tabindex="-1" role="dialog" aria-labelledby="addContributorModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+            <h4 class="modal-title" id="addContributorModalLabel">add additional contributor(s)</h4>
+          </div>
+          <form data-template="eXgroups:form-action-to-current-url" method="POST">
+          <div class="modal-body">
+                <div id="templateMember2">
+                    <div class="input-group">
+                      <input type="text" class="form-control grpMember" name="grpMember" placeholder="Username" aria-describedby="domain"/>
+                      <span class="input-group-addon" id="domain">@dariah.eu</span>
+                    </div>
+                </div>
+                <button id="addMember2" type="button" class="btn btn-primary btn-block" style="margin-top:15px;">add more</button>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="addContributor" value="1"/>
+                <button type="submit" class="btn btn-success">add</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- END Modal Contributor-->
+    <script>
+    $( document ).ready( function() {
+        var tmpl =  $('#templateMember2').html();
+        $('#addMember2').on("click", function(){
+            $('#templateMember2').append(function() {
+            return tmpl
+            });
+        });
+        
+        $("input[type=color]").on("change", function(){
+           var fid = $(this).context.form.id;
+           document.getElementById(fid).submit();
+        });
+        
+    });
+    </script>
+</div>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <div class="row">
+        <div data-template="eXgroups:addAnno2Group"/>
         <div class="col-md-12">
             <div data-template="eXv:table"/>
             <script type="text/javascript" src="resources/js/DataTables/datatables.min.js"/>
             <script>
                 $( document ).ready(function(){
                     $( "#store2TextGrid" ).on("click", function() {
-                        console.log( "Hi!" );
                         var sid = $('#sessionId').val(),
                             pid = $('#projectId').val(),
                             aid = [];
@@ -33,12 +33,34 @@
                         }
                     });
                 });
+                function getAnnotations() {
+                    $(".grpId").change(function() {
+                        var grpIds = [];
+                        $(":checked").each(function() {
+                            grpIds.push( $(this).val() );
+                        });
+                        var groups = grpIds.join(",");
+                        $("#groupsInput").val( groups );
+                    });
+                    
+                    var annIds = [];
+                    $('.selected').each(function(){
+                        var id = $(this).attr("id");
+                        annIds.push( id );
+                    });
+                    var annotations = annIds.join(",");
+                    
+                    $("#annotationsInput").val(annotations);
+                    
+                }
                 function testSelect() {
                     if ( $(".selected").length === 0 ) {
                             $(".textgrid").addClass("disabled");
+                            $(".groups").addClass("disabled");
                         }
                         else {
                             $(".textgrid").removeClass("disabled");
+                            $(".groups").removeClass("disabled");
                         }
                 }
                 $.fn.dataTable.ext.buttons.textgrid = {
@@ -49,6 +71,15 @@
                             $('#tgModal').modal('show');
                         }
                 };
+                $.fn.dataTable.ext.buttons.groups = {
+                    className: "groups",
+                    text: 'Add to Groups',
+                    enabled: false,
+                    action: function () {
+                            $('#groupsModal').modal('show');
+                            getAnnotations();
+                        }
+                };
                 var table = $('#annoTable').DataTable({
                     dom: 'Bfrtip',
                     buttons: [
@@ -56,6 +87,7 @@
                         'selectNone',
                         'csvHtml5',
                         'colvis',
+                        'groups',
                         'textgrid'
                     ]});
                 table.on( 'select', function () {
@@ -67,7 +99,7 @@
             </script>
         </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal TextGrid -->
     <div class="modal fade" id="tgModal" tabindex="-1" role="dialog" aria-labelledby="tgModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -79,7 +111,6 @@
           </div>
           <div class="modal-body">
             <p>In order to store any selected annotation in TextGrid, you have to provide a SessionId and a ProjectId. You will find both informations within the Lab.</p>
-            
               <div class="form-group">
                 <label for="sessionId">Session ID</label>
                 <input type="text" class="form-control" id="sessionId" placeholder="sessionId"/>
@@ -88,12 +119,37 @@
                 <label for="projectId">Project ID</label>
                 <input type="text" class="form-control" id="projectId" placeholder="projectId"/>
               </div>
-            
           </div>
           <div class="modal-footer">
             <button type="submit" id="store2TextGrid" class="btn btn-primary">Store in TextGrid</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Groups -->
+    <div class="modal fade" id="groupsModal" tabindex="-1" role="dialog" aria-labelledby="groupsModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+            <h4 class="modal-title" id="groupsModalLabel">Share Annotations within a Group</h4>
+          </div>
+          <form action="index.html" method="POST">
+          <div class="modal-body">
+            <p>You can share your annotations with multiple groups.
+            Admins of the groups will be able to remove (but not delete) annotations.</p>
+            <ul data-template="eXgroups:listUserGroups"/>
+            <input id="groupsInput" type="hidden" name="groups" value=""/>
+            <input id="annotationsInput" type="hidden" name="annotations" value=""/>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" id="groupsAddAnnos" class="btn btn-primary">Share!</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+          </form>
         </div>
       </div>
     </div>

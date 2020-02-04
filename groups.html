@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div data-template="eXgroups:receiver"/>
+    <div class="row">
+        <h1>Manage Groups</h1>
+        <div class="col-md-6 col-md-offset-3">
+            <h2>Admin:</h2>
+                <ul data-template="eXgroups:groups" data-template-role="admin">
+                </ul>
+            <h2>Contributor:</h2>
+                <ul data-template="eXgroups:groups" data-template-role="contributor">
+                </ul>
+        </div>
+      <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#createModal">create a group</button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+            <h4 class="modal-title" id="createModalLabel">create a group</h4>
+          </div>
+          <form action="groups.html" method="POST">
+          <div class="modal-body">
+            
+                <div class="form-group">
+                    <label for="name">Group Name</label>
+                    <input type="text" class="form-control" name="grpName" id="grpName" placeholder="Group Name"/>
+                </div>
+                <p>You will become the admin of this group. Add additional members (contributors):</p>
+                <div id="templateMember">
+                    <div class="input-group">
+                      <input type="text" class="form-control grpMember" name="grpMember" placeholder="Username" aria-describedby="domain"/>
+                      <span class="input-group-addon" id="domain">@dariah.eu</span>
+                    </div>
+                </div>
+                <button id="addMember" type="button" class="btn btn-primary btn-block" style="margin-top:15px;">add more</button>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Create</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+                    </form>
+        </div>
+      </div>
+    </div>
+    <!-- END Modal -->
+    <script>
+    $( document ).ready( function() {
+        var tmpl =  $('#templateMember').html();
+        $('#addMember').on("click", function(){
+            $('#templateMember').append(function() {
+            return tmpl
+            });
+        });
+    });
+    </script>
+</div>

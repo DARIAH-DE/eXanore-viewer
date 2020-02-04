@@ -64,5 +64,5 @@ declare variable $user := jwt:verify( $authTokenInParameter, $exanoreParam:JwtSe
             </dispatch>
     else
         <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-                <redirect url="https://annotation.de.dariah.eu/secure/getJWT.php?return=%2FAnnotationViewer{encode-for-uri( substring-after(request:get-url(), $exist:controller) || "?" || request:get-query-string() )}"/>
+                <redirect url="https://annotation.de.dariah.eu/secure/getJWT.php?return=https%3A%2F%2Fannotation.de.dariah.eu%2FAnnotationViewer%2Findex.html"/>
             </dispatch>

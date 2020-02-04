@@ -1,5 +1,14 @@
 /* Application styles could go here */
 
+li.admin:after {
+    font-family: FontAwesome;
+    content: " \f005";
+}
+
+ul.checkGroups > li {list-style: none;}
+.inline {
+    display: inline;
+}
 table#annoTable tbody tr th a {
     display: block;
     overflow: hidden;

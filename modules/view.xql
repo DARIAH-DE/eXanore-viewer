@@ -15,6 +15,7 @@ import module namespace config="http://annotation.de.dariah.eu/eXanore-viewer/co
 import module namespace app="http://annotation.de.dariah.eu/eXanore-viewer/templates" at "app.xql";
 import module namespace eXv="http://annotation.de.dariah.eu/eXanore-viewer/main" at "eXv.xql";
 import module namespace customElements="http://annotation.de.dariah.eu/eXanore-viewer/customElements" at "customElements.xqm";
+import module namespace eXgroups="http://annotation.de.dariah.eu/eXanore-viewer/groups" at "groups.xql";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 
