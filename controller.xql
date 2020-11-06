@@ -1,4 +1,4 @@
-xquery version "3.0";
+xquery version "3.1";
 
 import module namespace jwt="http://de.dariah.eu/ns/exist-jwt-module";
 import module namespace exanoreParam="http://www.eXanore.com/param" at "../eXanore/modules/params.xqm" ;
@@ -29,6 +29,7 @@ declare variable $user := jwt:verify( $authTokenInParameter, $exanoreParam:JwtSe
         </dispatch>
     else
         if($user/@valid = "true") then
+        if(string($user//jwt:userId) = "") then error(QName("https://ahikar.sub.uni-goettingen.de/ns/error", "JWT01"), "JWT valid, userId empty") else
             if (ends-with($exist:resource, ".html")) then
             (: the html page is run through view.xql to expand templates :)
             <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
