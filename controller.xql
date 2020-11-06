@@ -29,7 +29,7 @@ declare variable $user := jwt:verify( $authTokenInParameter, $exanoreParam:JwtSe
         </dispatch>
     else
         if($user/@valid = "true") then
-        if(string($user//jwt:userId) = "") then error(QName("https://ahikar.sub.uni-goettingen.de/ns/error", "JWT01"), "JWT valid, userId empty") else
+        if(string($user//jwt:userId) = "") then error(QName("http://de.dariah.eu/ns/error", "JWT01"), "JWT valid, userId empty") else
             if (ends-with($exist:resource, ".html")) then
             (: the html page is run through view.xql to expand templates :)
             <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
