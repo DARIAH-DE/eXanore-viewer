@@ -6,8 +6,10 @@ xquery version "3.0";
  :)
 module namespace config="http://annotation.de.dariah.eu/eXanore-viewer/config";
 
-declare namespace templates="http://exist-db.org/xquery/templates";
+import module namespace backend="http://www.edirom.de/tools/eXanore/config" at "../../eXanore/modules/config.xqm";
 
+
+declare namespace templates="http://exist-db.org/xquery/templates";
 declare namespace repo="http://exist-db.org/xquery/repo";
 declare namespace expath="http://expath.org/ns/pkg";
 
@@ -29,7 +31,7 @@ declare variable $config:app-root :=
         replace( substring-before($modulePath, "/modules"), "null", "" )
 ;
 
-declare variable $config:data-root := "/" || string-join(tokenize($config:app-root, '/')[position() lt last()][position() gt 1], '/') || "/eXanore/annotations";
+declare variable $config:data-root := $backend:data-root;
 
 declare variable $config:grpHome := $config:app-root || "/groups/";
 
