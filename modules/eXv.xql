@@ -3,7 +3,6 @@ xquery version "3.1";
 module namespace eXv="http://annotation.de.dariah.eu/eXanore-viewer/main";
 import module namespace eXgroups="http://annotation.de.dariah.eu/eXanore-viewer/groups" at "groups.xql";
 
-import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
 import module namespace templates="http://exist-db.org/xquery/templates" ;
 import module namespace config="http://annotation.de.dariah.eu/eXanore-viewer/config" at "config.xqm";
 

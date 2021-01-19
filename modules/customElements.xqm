@@ -1,9 +1,6 @@
 xquery version "3.1";
 module namespace customElements="http://annotation.de.dariah.eu/eXanore-viewer/customElements";
 
-import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
-
-
 declare function customElements:prepare($node as node(), $model as map(*), $uri as xs:string) {
     let $prefix := tokenize($uri, ":")[1]
 
